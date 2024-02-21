@@ -1,0 +1,19 @@
+const Discord = require('discord.js');
+const Config = require('../config');
+
+module.exports = {
+    name: "add",
+    description: "Vous permet de ajouter une autres personne dans le ticket",
+    permissions: "null",
+    dm : false,
+    options:{
+        type: "user",
+        name: "member",
+        description: "tag du membre a ajouter"
+
+    },
+    
+    async run(bot, msg, args){
+
+    }
+}

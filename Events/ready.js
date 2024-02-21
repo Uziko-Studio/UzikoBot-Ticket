@@ -1,8 +1,14 @@
 const Discord = require('discord.js');
 const LoadSlashCommand = require('../Handler/LoadSlashCommand')
 const version = require('../package-lock.json')
+const path = require('path');
+const data = path.join(__dirname, '..', 'Data');
+const fs = require('fs');
 
 module.exports = async bot => {
+    if (!fs.existsSync(data)) {
+        fs.mkdirSync(data);
+    }
     try {
         await LoadSlashCommand(bot);
         

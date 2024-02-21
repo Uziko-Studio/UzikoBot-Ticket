@@ -38,7 +38,7 @@ module.exports =  async (bot, interation) =>{
             AttachFiles: true,
             ReadMessageHistory: true
         })
-        await interation.reply({content: `Votre Ticket a été crée : ${channel}`, ephemeral: true})
+        await channel.setTopic(interation.user.id)
         await open(bot, channel, interation, "paiment")
     }else {
         await interation.reply({content: `Vous avez deja un ticket: ${check}`, ephemeral: true})

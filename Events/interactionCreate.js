@@ -3,8 +3,12 @@ const Tpopen = require('../Function/TicketPaimentOpen')
 const Tqopen = require('../Function/TicketQuestionOpen')
 const Tsopen = require('../Function/TicketServiceOpen')
 const close = require('../Function/CloseTickets')
+const config = require('../config')
 
 module.exports = async (bot, interation) => {
+  const guild = interation.guild;
+  const chan = guild.channels.cache;
+
     if (interation.type === Discord.InteractionType.ApplicationCommand) {
     let command = require(`../Commands/${interation.commandName}`)
     command.run(bot, interation, command.options)
@@ -34,12 +38,14 @@ module.exports = async (bot, interation) => {
     });
   
     await newMessage.edit({ components: newComponents });
-
     if (selectedOption === 'ticket-question') {
         Tqopen(bot, interation)
+      
     } else if (selectedOption === 'ticket-service') {
         Tsopen(bot, interation)
+
     } else if (selectedOption === 'ticket-paiement') {
         Tpopen(bot, interation)
+
     }
 }
